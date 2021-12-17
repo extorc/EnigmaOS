@@ -27,8 +27,8 @@ int 0x13
 call clearScreen                             ;Clear Screen
 call gdt_initiate                            ;GDT implementation
 
-%include "clearScreen.asm"
-%include "globalDescriptorTable.asm"
+%include "Boot/clearScreen.asm"
+%include "Boot/globalDescriptorTable.asm"
 
 times 510-($-$$) db 0              
 dw 0xaa55
