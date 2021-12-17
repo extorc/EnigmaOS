@@ -1,5 +1,5 @@
 mkdir build
-i386-elf-gcc -ffreestanding -m32 -g -c kernal.cpp -o ./build/kernal.o
+i386-elf-gcc -ffreestanding -m32 -g -c ./Kernal/kernal.c -o ./build/kernal.o
 nasm -f elf kernal_entry.asm -o ./build/kernal_entry.o
 i386-elf-ld -o ./build/full_kernal.bin -Ttext 0x1000 ./build/kernal_entry.o ./build/kernal.o --oformat binary
 nasm boot.asm -fbin -o ./build/boot.bin
