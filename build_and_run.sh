@@ -1,7 +1,8 @@
 mkdir build
 i386-elf-gcc -ffreestanding -m32 -g -c ./Kernal/kernal.c -o ./build/kernal.o
+i386-elf-gcc -ffreestanding -m32 -g -c ./Drivers/VGA_Text.c -o ./build/VGA_Text.o
 nasm -f elf kernal_entry.asm -o ./build/kernal_entry.o
-i386-elf-ld -o ./build/full_kernal.bin -Ttext 0x1000 ./build/kernal_entry.o ./build/kernal.o --oformat binary
+i386-elf-ld -o ./build/full_kernal.bin -Ttext 0x1000 ./build/kernal_entry.o ./build/kernal.o ./build/VGA_Text.o --oformat binary
 nasm boot.asm -fbin -o ./build/boot.bin
 cat ./build/boot.bin ./build/full_kernal.bin > ./build/final_kernal.bin
 nasm -fbin memory_padding.asm -o ./build/zeros.bin
